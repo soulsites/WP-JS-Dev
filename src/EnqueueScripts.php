@@ -4,19 +4,20 @@ namespace GsapDev;
 
 class EnqueueScripts {
     private $js_files = [
-        'gsap.min.js',
-        'CSSRulePlugin.min.js',
-        'CustomEase.min.js',
-        'Draggable.min.js',
-        'EaselPlugin.min.js',
-        'EasePack.min.js',
-        'Flip.min.js',
-        'MotionPathPlugin.min.js',
-        'Observer.min.js',
-        'PixiPlugin.min.js',
-        'ScrollToPlugin.min.js',
-        'ScrollTrigger.min.js',
-        'TextPlugin.min.js',
+        'gsap.min.js' => 'gsap',
+        'CSSRulePlugin.min.js' => 'gsap',
+        'CustomEase.min.js' => 'gsap',
+        'Draggable.min.js' => 'gsap',
+        'EaselPlugin.min.js' => 'gsap',
+        'EasePack.min.js' => 'gsap',
+        'Flip.min.js' => 'gsap',
+        'MotionPathPlugin.min.js' => 'gsap',
+        'Observer.min.js' => 'gsap',
+        'PixiPlugin.min.js' => 'gsap',
+        'ScrollToPlugin.min.js' => 'gsap',
+        'ScrollTrigger.min.js' => 'gsap',
+        'TextPlugin.min.js' => 'gsap',
+        'p5.min.js' => 'ps5',
     ];
 
     public function __construct() {
@@ -24,13 +25,13 @@ class EnqueueScripts {
     }
 
     public function enqueue_selected_scripts() {
-        foreach ($this->js_files as $file) {
+        foreach ($this->js_files as $file => $folder) {
             $field_name = 'crb_' . str_replace(['.', '-'], '_', strtolower($file));
             $option = carbon_get_theme_option($field_name);
             if ($option) {
                 wp_enqueue_script(
                     'gsapdev-' . $file,
-                    plugin_dir_url(dirname(__FILE__)) . 'src/Public/js/gsap/' . $file,
+                    plugin_dir_url(dirname(__FILE__)) . 'src/Public/js/' . $folder . '/' . $file,
                     array(),
                     null,
                     true

@@ -20,6 +20,7 @@ class SettingsPage {
         'ScrollToPlugin.min.js',
         'ScrollTrigger.min.js',
         'TextPlugin.min.js',
+        'p5.min.js',
     ];
 
     public function __construct() {
